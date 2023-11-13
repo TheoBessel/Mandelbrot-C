@@ -2,44 +2,78 @@
 #define COMPLEX_H
 
 // Type utilisateur complexe_t
-/** À COMPLÉTER **/
+struct complexe_t {
+    double re;
+    double im;
+};
+
+typedef struct complexe_t complexe_t;
 
 // Fonctions reelle et imaginaire
 /**
  * reelle
+ * Retourne la partie réelle du nombre complexe donné en argument
  *
- * CONTRAT À COMPLÉTER
+ * Paramètres :
+ *   z              [in]  Complexe dont on veut retourner la partie réelle
+ * 
+ * Pré-conditions : aucune
+ * Post-conditions : aucune
  */
-/** FONCTION À DÉCLARER **/
+double reelle(complexe_t z);
 
 /**
  * imaginaire
+ * Retourne la partie imaginaire du nombre complexe donné en argument
  *
- * CONTRAT À COMPLÉTER
+ * Paramètres :
+ *   z              [in]  Complexe dont on veut retourner la partie imaginaire
+ * 
+ * Pré-conditions : aucune
+ * Post-conditions : aucune
  */
-/** FONCTION À DÉCLARER **/
+double imaginaire(complexe_t z);
 
 // Procédures set_reelle, set_imaginaire et init
 /**
  * set_reelle
+ * Modifie la partie réelle du nombre complexe passé en argument
  *
- * CONTRAT À COMPLÉTER
+ * Paramètres :
+ *   z              [out] Complexe dont on modifie la partie réelle
+ *   x              [in]  Nouvelle valeur de la partie réelle
+ * 
+ * Pré-conditions : aucune
+ * Post-conditions : set_reelle(*z, x) => reelle(z) == x
  */
-/** PROCÉDURE À DÉCLARER **/
+void set_reelle(complexe_t* z, double x);
 
 /**
  * set_imaginaire
+ * Modifie la partie imaginaire du nombre complexe passé en argument
  *
- * CONTRAT À COMPLÉTER
+ * Paramètres :
+ *   z              [out] Complexe dont on modifie la partie imaginaire
+ *   y              [in]  Nouvelle valeur de la partie imaginaire
+ * 
+ * Pré-conditions : aucune
+ * Post-conditions : set_imaginaire(*z, y) => imaginaire(z) == y
  */
-/** PROCÉDURE À DÉCLARER **/
+void set_imaginaire(complexe_t* z, double y);
 
 /**
  * init
- *
- * CONTRAT À COMPLÉTER
+ * Modifie les parties réelles et imaginaires d'un nombre complexe passé en argument
+ * 
+ * Paramètres :
+ *   z              [out] Complexe que l'on modifie
+ *   x              [in]  Nouvelle valeur de la partie réelle
+ *   y              [in]  Nouvelle valeur de la partie imaginaire
+ * 
+ * Pré-conditions : aucune
+ * Post-conditions : init(*z, x, y) => reelle(z) == x /\ imaginaire(z) == y
  */
-/** PROCÉDURE À DÉCLARER **/
+void init(complexe_t* z, double x, double y);
 
 // Procédure copie
 /**
@@ -66,7 +100,7 @@ void copie(complexe_t* resultat, complexe_t autre);
  *   op             [in]  Complexe dont on veut le conjugué
  *
  * Pré-conditions : resultat non-null
- * Post-conditions : reelle(*resultat) = reelle(op), complexe(*resultat) = - complexe(op)
+ * Post-conditions : reelle(*resultat) = reelle(op), imaginaire(*resultat) = - imaginaire(op)
  */
 void conjugue(complexe_t* resultat, complexe_t op);
 
@@ -141,31 +175,46 @@ void echelle(complexe_t* resultat, complexe_t op, double facteur);
  *
  * Pré-conditions : resultat non-null, exposant >= 0
  * Post-conditions : *resultat = op * op * ... * op
- *                                 { n fois }
+ *                                      { n fois }
  */
 void puissance(complexe_t* resultat, complexe_t op, int exposant);
 
 // Module et argument
 /**
  * module_carre
+ * Calcule le carré du module d'un nombre complexe
+ * 
+ * Paramètres :
+ *   z              [in]  Complexe dont on calcule le carré du module
  *
- * CONTRAT À COMPLETER
+ * Pré-conditions : aucune
+ * Post-conditions : resultat >= 0
  */
-/** FONCTION À DÉCLARER **/
+double module_carre(complexe_t z);
 
 /**
  * module
+ * Calcule le module d'un nombre complexe
  *
- * CONTRAT À COMPLETER
+ * Paramètres :
+ *   z              [in]  Complexe dont on calcule le module
+ *
+ * Pré-conditions : aucune
+ * Post-conditions : resultat >= 0
  */
-/** FONCTION À DÉCLARER **/
+double module(complexe_t z);
 
 /**
  * argument
+ * Calcule l'argument d'un nombre complexe
  *
- * CONTRAT À COMPLETER
+ * Paramètres :
+ *   z              [in]  Complexe dont on calcule l'argument
+ *
+ * Pré-conditions : z =/= 0
+ * Post-conditions : -π < resultat <= π
  */
-/** FONCTION À DÉCLARER **/
+double argument(complexe_t z);
 
 
 #endif // COMPLEXE_H
