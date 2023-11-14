@@ -69,6 +69,8 @@ void echelle(complexe_t* resultat, complexe_t op, double facteur) {
 void puissance(complexe_t* resultat, complexe_t op, int exposant) {
     if (exposant == 0) {
         init(resultat, 1, 0);
+    } else if (exposant == 1) {
+        copie(resultat, op);
     } else if (exposant % 2 == 0) {
         multiplier(resultat, *resultat, op);
         multiplier(resultat, *resultat, op);
