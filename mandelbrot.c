@@ -17,14 +17,14 @@
 #include "mandelbrot.h"
 
 int mandelbrot(complexe_t z0, complexe_t c, double seuil, int maxit) {
-    complexe_t* zn;
-    copie(zn, z0);
+    complexe_t zn;
+    copie(&zn, z0);
 
     int iter = 0;
 
-    while (module(*zn) <= seuil && iter < maxit) {
-        puissance(zn, *zn, 2);
-        ajouter(zn, *zn, c);
+    while (module(zn) <= seuil && iter < maxit) {
+        puissance(&zn, zn, 2);
+        ajouter(&zn, zn, c);
 
         iter++;
     }
