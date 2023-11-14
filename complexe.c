@@ -71,15 +71,16 @@ void puissance(complexe_t* resultat, complexe_t op, int exposant) {
         init(resultat, 1, 0);
     } else if (exposant == 1) {
         copie(resultat, op);
-    } else if (exposant % 2 == 0) {
-        multiplier(resultat, *resultat, op);
-        multiplier(resultat, *resultat, op);
-        puissance(resultat, op, exposant / 2);
     } else {
-        multiplier(resultat, *resultat, op);
-        multiplier(resultat, *resultat, op);
-        puissance(resultat, op, (exposant-1) / 2);
-        multiplier(resultat, *resultat, op);
+        complexe_t op_2;
+        multiplier(&op_2,op, op);
+        if (exposant % 2 == 0) {
+            puissance(resultat, op_2, exposant / 2);
+        } else {
+            complexe_t even_pow;
+            puissance(&even_pow, op_2, (exposant-1) / 2);
+            multiplier(resultat, op, even_pow);
+        }
     }
 }
 
